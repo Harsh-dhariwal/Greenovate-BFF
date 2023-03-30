@@ -17,11 +17,14 @@ from django.contrib import admin
 from django.urls import path
 from . import views
 from accounts.views import LoginView, RegisterView
+from acceptinfo.views import calc
 
 urlpatterns = [
     path('',views.homepage,name='homepage'),
     path('admin/', admin.site.urls),
       path('login/', LoginView.as_view(), name='login'),
-    path('register/', RegisterView.as_view(), name='register')
+    path('register/', RegisterView.as_view(), name='register'),
+    path('calc/', calc, name='calc'),
+    
 ]
 
