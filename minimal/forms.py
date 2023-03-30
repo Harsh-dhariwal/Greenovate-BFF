@@ -7,7 +7,7 @@ from .models import comp_database
 class carbon_emmision(forms.ModelForm):
     class Meta:
         model = comp_database
-        fields = ('company_name','paper_use','traditional_hydro_use','traditional_hydro_location',
+        fields = ('paper_use','traditional_hydro_use','traditional_hydro_location',
                   'solar_energy','wind_energy','hydroelectric_energy','biomass_energy',
                   'geothermal_energy','other_clean_energy','Fuel_petrol','Fuel_Diesel',
                   'Fuel_LPG','SmallDieselCar', 'MediumDieselCar', 'LargeDieselCar', 

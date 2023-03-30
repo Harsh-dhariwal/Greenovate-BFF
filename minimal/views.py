@@ -12,6 +12,10 @@ def min_cal(request):
             
             
             
+            company_name=request.POST['company_name']
+            print("company name is",company_name)
+            
+            
             
             
             paperuse = data['paper_use']
@@ -38,11 +42,6 @@ def min_cal(request):
             url = "https://carbonfootprint1.p.rapidapi.com/TraditionalHydroToCarbonFootprint"
 
             querystring = {"consumption":str(trad_hydro_amount),"location":str(location)}
-
-            headers = {
-	        "X-RapidAPI-Key": "54caaa891bmsh28b30d3e6519382p1e54dejsnb01e24eac7f5",
-	        "X-RapidAPI-Host": "carbonfootprint1.p.rapidapi.com"
-            }
 
             response = requests.request("GET", url, headers=headers, params=querystring)
 

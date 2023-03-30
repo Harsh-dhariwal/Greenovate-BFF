@@ -1,6 +1,247 @@
-<h1>minimal details accept form</h1>
-<form method="POST">
+<h1>Companies report from basic details</h1>
+<form method="POST" name="minform">
     {% csrf_token %}
-    {{ form.as_p }}
+    <label> company name</label>
+    <input type="text" name="company_name" id="company_name">
+    <br>
+    <label>Paper use </label>
+    <input type="text" name="paper_use" id="paper_use">
+    <br>
+    <label>traditional hydro use</label>
+    <input type="number" name="traditional_hydro_use" id="traditional_hydro_use">
+    <br>
+    <label>Hydro power plant location</label>
+    <select name="traditional_hydro_location" id="">
+        <option name="USA">USA</option>
+        <option name="Canada">Canada</option>
+        <option name="UK">UK</option>
+        <option name="Europe">Europe</option>
+        <option name="Africa">Africa</option>
+        <option name="LatinAmerica">LatinAmerica</option>
+        <option name="MiddleEast">MiddleEast</option>
+        <option name="OtherCountry">OtherCountry</option>
+    </select>
+    <br>
+    <br><br><br>
+
+    <label>New energy source usage</label>
+    <br>
+    <input type="checkbox" name="solar_energy_check">
+    Solar energy
+    <input type="number" name="solar_energy">
+
+    <br>
+    <input type="checkbox" name="hydroelectric_energy_check">
+    hydroelectric energy
+    <input type="number" name="hydroelectric_energy">
+
+    <br>
+
+    <input type="checkbox" name="wind_energy_check">
+    Wind energy
+    <input type="number" name="wind_energy">
+
+    <br>
+    <input type="checkbox" name="biomass_energy_check">
+    biomass energy
+    <input type="number" name="biomass_energy">
+
+    <br>
+    <input type="checkbox" name="geothermal_energy_check">
+    geothermal energy
+    <input type="number" name="geothermal_energy">
+
+    <br>
+    <input type="checkbox" name="other_clean_energy_check">
+    other clean energy
+    <input type="number" name="other_clean_energy">
+
+    <br>
+
+<br><br><br>
+<label>Fuel usage</label>
+<br>
+    <input type="checkbox" name="Fuel_petrol_check">
+    Fuel_petrol
+    <input type="number" name="Fuel_petrol">
+
+    <br>
+    <input type="checkbox" name="Fuel_Diesel_check">
+    Fuel_Diesel
+    <input type="number" name="Fuel_Diesel">
+
+    <br>
+    <input type="checkbox" name="Fuel_LPG_check">
+    Fuel_LPG
+    <input type="number" name="Fuel_LPG">
+
+    <br><br><br>
+
+    <label>travel car usage</label>
+    <br>
+    
+    <input type="checkbox" name="SmallDieselCar_check">
+    SmallDieselCar
+    <input type="number" name="SmallDieselCar">
+    <br>
+    <input type="checkbox" name="MediumDieselCar_check">
+    MediumDieselCar
+    <input type="number" name="MediumDieselCar">
+    <br>
+    <input type="checkbox" name="LargeDieselCar_check">
+    LargeDieselCar
+    <input type="number" name="LargeDieselCar">
+    <br>
+    <input type="checkbox" name="MediumHybridCar_check">
+    MediumHybridCar
+    <input type="number" name="MediumHybridCar">
+    <br>
+    <input type="checkbox" name="LargeHybridCar_check">
+    LargeHybridCar
+    <input type="number" name="LargeHybridCar">
+    <br>
+    <input type="checkbox" name="MediumLPGCar_check">
+    MediumLPGCar
+    <input type="number" name="MediumLPGCar">
+    <br>
+
+    <input type="checkbox" name="LargeLPGCar_check">
+    LargeLPGCar
+    <input type="number" name="LargeLPGCar">
+    <br>
+    <input type="checkbox" name="MediumCNGCar_check">
+    MediumCNGCar
+    <input type="number" name="MediumCNGCar">
+    <br>
+    <input type="checkbox" name="LargeCNGCar_check">
+    LargeCNGCar
+    <input type="number" name="LargeCNGCar">
+    <br>
+    <input type="checkbox" name="SmallPetrolVan_check">
+    SmallPetrolVan
+    <input type="number" name="SmallPetrolVan">
+    <br>
+    <input type="checkbox" name="LargePetrolVan_check">
+    LargePetrolVan
+    <input type="number" name="LargePetrolVan">
+    <br>
+
+    <input type="checkbox" name="SmallDielselVan_check">
+    SmallDielselVan
+    <input type="number" name="SmallDielselVan">
+    <br>
+    <input type="checkbox" name="MediumPetrolCar_check">
+    MediumPetrolCar
+    <input type="number" name="MediumPetrolCar">
+    <br>
+    <input type="checkbox" name="LargePetrolCar_check">
+    LargePetrolCar
+    <input type="number" name="LargePetrolCar">
+    <br>
+    <input type="checkbox" name="SmallMotorBike_check">
+    SmallMotorBike
+    <input type="number" name="SmallMotorBike">
+    <br>
+    <input type="checkbox" name="MediumMotorBike_check">
+    MediumMotorBike
+    <input type="number" name="MediumMotorBike">
+    <br>
+    <input type="checkbox" name="LargeMotorBike_check">
+    LargeMotorBike
+    <input type="number" name="LargeMotorBike">
+    <br>
+    <br><br><br>
+
+    <label>Flights</label>
+    <br>
+    <input type="checkbox" name="DomesticFlight_check">
+    DomesticFlight
+    <input type="number" name="DomesticFlight">
+    <br>
+    <input type="checkbox" name="ShortEconomyClassFlight_check">
+    ShortEconomyClassFlight
+    <input type="number" name="ShortEconomyClassFlight">
+    <br>
+    <input type="checkbox" name="ShortBusinessClassFlight_check">
+    ShortBusinessClassFlight
+    <input type="number" name="ShortBusinessClassFlight">
+    <br>
+    <input type="checkbox" name="LongEconomyClassFlight_check">
+    LongEconomyClassFlight
+    <input type="number" name="LongEconomyClassFlight">
+    <br>
+    <input type="checkbox" name="LongPremiumClassFlight_check">
+    LongPremiumClassFlight
+    <input type="number" name="LongPremiumClassFlight">
+    <br>
+    <input type="checkbox" name="LongBusinessClassFlight_check">
+    LongBusinessClassFlight
+    <input type="number" name="LongBusinessClassFlight">
+    <br>
+    <input type="checkbox" name="LongFirstClassFlight_check">
+    LongFirstClassFlight
+    <input type="number" name="LongFirstClassFlight">
+    <br>
+
+    <br><br><br>
+
+    <label>Distance travelled by other modes of transport</label>
+    <br>
+    <input type="checkbox" name="SmallMotorBike_check">
+    SmallMotorBike
+    <input type="number" name="SmallMotorBike">
+    <br>
+    <input type="checkbox" name="MediumMotorBike_check">
+    MediumMotorBike
+    <input type="number" name="MediumMotorBike">
+    <br>
+    <input type="checkbox" name="LargeMotorBike_check">
+    LargeMotorBike
+    <input type="number" name="LargeMotorBike">
+    <br>
+    <input type="checkbox" name="Taxi_check">
+    Taxi
+    <input type="number" name="Taxi">
+    <br>
+    <input type="checkbox" name="ClassicBus_check">
+    ClassicBus
+    <input type="number" name="ClassicBus">
+    <br>
+    <input type="checkbox" name="EcoBus_check">
+    EcoBus
+    <input type="number" name="EcoBus">
+    <br>
+    
+    <input type="checkbox" name="Coach_check">
+    Coach
+    <input type="number" name="Coach">
+    <br>
+    <input type="checkbox" name="NationalTrain_check">
+    NationalTrain
+    <input type="number" name="NationalTrain">
+    <br>
+    <input type="checkbox" name="LightRail_check">
+    LightRail
+    <input type="number" name="LightRail">
+    <br>
+    <input type="checkbox" name="Subway_check">
+    Subway
+    <input type="number" name="Subway">
+    <br>
+
+
+
+
+
+
+
+   
+
+
+
+
+
+
+    <!--{{ form.as_p }}-->
     <button type="submit">Send</button>
 </form>
