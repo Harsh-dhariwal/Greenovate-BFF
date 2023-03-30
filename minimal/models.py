@@ -2,11 +2,23 @@ from django.db import models
 
 # Create your models here.
 
+location_options=[
+    ('USA','USA'),
+    ('Canada','Canada'),
+    ('UK','Europe'),
+    ('Africa','Africa'),
+    ('LatinAmerica','LatinAmerica'),
+    ('MiddleEast','MiddleEast'),
+    ('OtherCountry','OtherCountry')
+    
+]
+
+
 class comp_database(models.Model):
     company_name=models.CharField(max_length=100)
     paper_use=models.IntegerField()
     traditional_hydro_use=models.IntegerField()
-    traditional_hydro_location=models.CharField(max_length=100)
+    traditional_hydro_location=models.CharField(max_length=100,choices=location_options,default='USA')
     solar_energy=models.IntegerField()
     wind_energy=models.IntegerField()
     hydroelectric_energy=models.IntegerField()
