@@ -18,6 +18,7 @@ from django.urls import path
 from . import views
 from accounts.views import LoginView, RegisterView
 from acceptinfo.views import calc
+from minimal.views import min_cal
 
 urlpatterns = [
     path('',views.homepage,name='homepage'),
@@ -25,6 +26,7 @@ urlpatterns = [
       path('login/', LoginView.as_view(), name='login'),
     path('register/', RegisterView.as_view(), name='register'),
     path('calc/', calc, name='calc'),
-    
+    path('mincal/',min_cal,name='mincal'),
+
 ]
 
