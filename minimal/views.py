@@ -497,8 +497,11 @@ def min_cal(request):
                 print(response.text)  
 
             print("total_carbonemmision_othervehicles",total_carbonemmision_othervehicles)
+            purchased_heat= request.POST.get('purchased_heat')
+            purchased_heat_emmision=int(purchased_heat)*3.65
             
-            
+            purchased_cooling= request.POST.get('purchased_cooling')
+            purchased_cooling_emmision=int(purchased_cooling)*2.68
             return render(request, 'success.html')
     else:
         form = carbon_emmision()

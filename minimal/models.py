@@ -69,6 +69,8 @@ class comp_database(models.Model):
     Subway=models.IntegerField()
     FerryOnFoot=models.IntegerField()
     FerryInCar=models.IntegerField()
+    purchased_cooling=models.IntegerField(default=0)
+    purchased_heating=models.IntegerField(default=0)
    
     
     
@@ -82,6 +84,8 @@ class carbon_emmission(models.Model):
     flight_carbon=models.IntegerField()
     motor_bike_carbon=models.IntegerField()
     public_transit_carbon=models.IntegerField()
+    purchased_cooling=models.IntegerField(default=0)
+    purchased_heating=models.IntegerField(default=0)
     
     
     
