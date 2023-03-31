@@ -1,6 +1,7 @@
 from django.shortcuts import render
 from .forms import carbon_emmision
 import requests
+from .models import carbon_emmission,comp_database
 
 def min_cal(request):
     if request.method == 'POST':
@@ -24,11 +25,17 @@ def min_cal(request):
             querystring = {"weight":str(paperuse),"unit":"kg"}
 
             headers = {
-	            "X-RapidAPI-Key": "e5d658079emshade1e85bc8f8b2ep14debejsn9d62bcd9380b",
-	            "X-RapidAPI-Host": "carbonfootprint1.p.rapidapi.com"
+	            'X-RapidAPI-Key': 'b6cf2142c1mshb1b4161195ee8c4p11d867jsn69e16bcf63a1',
+                'X-RapidAPI-Host': 'carbonfootprint1.p.rapidapi.com'
                 }
 
             response = requests.request("GET", url, headers=headers, params=querystring)
+            response_data = response.json()
+            
+            tree_eq=int(response_data['numberOfTrees'])
+            tree_eq=1
+            
+            
             print(response.text)
             
             
@@ -44,6 +51,8 @@ def min_cal(request):
             querystring = {"consumption":str(trad_hydro_amount),"location":str(location)}
 
             response = requests.request("GET", url, headers=headers, params=querystring)
+            response_data = response.json()
+            traditional_hydro_emmision=int(response_data['carbonEquivalent'])
 
             print(response.text)
             # print("company name is",field)
@@ -176,12 +185,49 @@ def min_cal(request):
             MediumCNGCar = request.POST['MediumCNGCar']
             SmallPetrolVan = request.POST['SmallPetrolVan']  
             LargePetrolVan=request.POST['LargePetrolVan']   
-            SmallDielselVan=request.POST['SmallDielselVan']
+            SmallDieselVan=request.POST['SmallDieselVan']
             MediumPetrolCar=request.POST['MediumPetrolCar']   
             LargePetrolCar=request.POST['LargePetrolCar']  
             SmallMotorBike=request.POST['SmallMotorBike']  
             MediumMotorBike = request.POST['MediumMotorBike'] 
             LargeMotorBike=request.POST['LargeMotorBike'] 
+            LargeCNGCar=request.POST['LargeCNGCar']
+            MediumDieselVan=1
+            # request.POST['MediumDieselVan']
+            LargeDieselVan=request.POST['LargeDieselVan']
+            LPGVan=request.POST['LPGVan']
+            CNGVan=request.POST['CNGVan']
+            SmallPetrolCar=request.POST['SmallPetrolCar']
+            
+            if SmallPetrolCar:
+                url = "https://carbonfootprint1.p.rapidapi.com/CarbonFootprintFromCarTravel"
+
+                querystring = {"distance":str(SmallPetrolCar),"vehicle":"SmallPetrolCar"} 
+
+                response = requests.request("GET", url, headers=headers, params=querystring)
+                response_data = response.json()
+                total_carbonemmision_cars=total_carbonemmision_cars+int(response_data['carbonEquivalent'])
+                print(response.text)
+            if CNGVan:
+                url = "https://carbonfootprint1.p.rapidapi.com/CarbonFootprintFromCarTravel"
+
+                querystring = {"distance":str(CNGVan),"vehicle":"CNGVan"} 
+
+                response = requests.request("GET", url, headers=headers, params=querystring)
+                response_data = response.json()
+                total_carbonemmision_cars=total_carbonemmision_cars+int(response_data['carbonEquivalent'])
+                print(response.text)
+            
+            
+            if LPGVan:
+                url = "https://carbonfootprint1.p.rapidapi.com/CarbonFootprintFromCarTravel"
+
+                querystring = {"distance":str(LPGVan),"vehicle":"LPGVan"} 
+
+                response = requests.request("GET", url, headers=headers, params=querystring)
+                response_data = response.json()
+                total_carbonemmision_cars=total_carbonemmision_cars+int(response_data['carbonEquivalent'])
+                print(response.text)
             
             
             if SmallDieselCar:
@@ -262,6 +308,15 @@ def min_cal(request):
                 response_data = response.json()
                 total_carbonemmision_cars=total_carbonemmision_cars+int(response_data['carbonEquivalent'])
                 print(response.text)
+            if LargeCNGCar:
+                url = "https://carbonfootprint1.p.rapidapi.com/CarbonFootprintFromCarTravel"
+
+                querystring = {"distance":str(LargeCNGCar),"vehicle":"LargeCNGCar"} 
+
+                response = requests.request("GET", url, headers=headers, params=querystring)
+                response_data = response.json()
+                total_carbonemmision_cars=total_carbonemmision_cars+int(response_data['carbonEquivalent'])
+                print(response.text)
             if SmallPetrolVan:
                 url = "https://carbonfootprint1.p.rapidapi.com/CarbonFootprintFromCarTravel"
 
@@ -280,10 +335,10 @@ def min_cal(request):
                 response_data = response.json()
                 total_carbonemmision_cars=total_carbonemmision_cars+int(response_data['carbonEquivalent'])
                 print(response.text)
-            if SmallDielselVan:
+            if SmallDieselVan:
                 url = "https://carbonfootprint1.p.rapidapi.com/CarbonFootprintFromCarTravel"
 
-                querystring = {"distance":str(SmallDielselVan),"vehicle":"SmallDielselVan"} 
+                querystring = {"distance":str(SmallDieselVan),"vehicle":"SmallDieselVan"} 
 
                 response = requests.request("GET", url, headers=headers, params=querystring)
                 response_data = response.json()
@@ -326,16 +381,35 @@ def min_cal(request):
                 response_data = response.json()
                 total_carbonemmision_cars=total_carbonemmision_cars+int(response_data['carbonEquivalent'])
                 print(response.text)
+            # if MediumDieselVan:
+            #     url = "https://carbonfootprint1.p.rapidapi.com/CarbonFootprintFromCarTravel"
+
+            #     querystring = {"distance":str(MediumDieselVan),"vehicle":"MediumDieselVan"} 
+
+            #     response = requests.request("GET", url, headers=headers, params=querystring)
+            #     response_data = response.json()
+            #     total_carbonemmision_cars=total_carbonemmision_cars+int(response_data['carbonEquivalent'])
+            #     print(response.text)
+            if LargeDieselVan:
+                url = "https://carbonfootprint1.p.rapidapi.com/CarbonFootprintFromCarTravel"
+
+                querystring = {"distance":str(LargeDieselVan),"vehicle":"LargeDieselVan"} 
+
+                response = requests.request("GET", url, headers=headers, params=querystring)
+                response_data = response.json()
+                total_carbonemmision_cars=total_carbonemmision_cars+int(response_data['carbonEquivalent'])
+                print(response.text)
                 
                 
             DomesticFlight = request.POST.get('DomesticFlight')
-            ShortEconomyFlight = request.POST.get('ShortEconomyFlight')
+            ShortEconomyClassFlight = request.POST.get('ShortEconomyClassFlight')
             ShortBusinessClassFlight= request.POST.get('ShortBusinessClassFlight')
             LongEconomyClassFlight= request.POST.get('LongEconomyClassFlight')  
             LongPremiumClassFlight= request.POST.get('LongPremiumClassFlight')   
             LongBusinessClassFlight=  request.POST.get('LongBusinessClassFlight')  
             LongFirstClassFlight = request.POST.get('LongFirstClassFlight')
             total_carbonemmision_flights=0
+            
             
             if DomesticFlight:
                 url = "https://carbonfootprint1.p.rapidapi.com/CarbonFootprintFromFlight"
@@ -345,10 +419,10 @@ def min_cal(request):
                 response_data = response.json()
                 total_carbonemmision_flights=total_carbonemmision_flights+int(response_data['carbonEquivalent'])
                 print(response.text)
-            if ShortEconomyFlight:
+            if ShortEconomyClassFlight:
                 url = "https://carbonfootprint1.p.rapidapi.com/CarbonFootprintFromFlight"
 
-                querystring = {"distance":str(ShortEconomyFlight),"type":"ShortEconomyFlight"}
+                querystring = {"distance":str(ShortEconomyClassFlight),"type":"ShortEconomyClassFlight"}
                 response = requests.request("GET", url, headers=headers, params=querystring)
                 response_data = response.json()
                 total_carbonemmision_flights=total_carbonemmision_flights+int(response_data['carbonEquivalent'])
@@ -408,7 +482,7 @@ def min_cal(request):
             if SmallMotorBike:
                 url = "https://carbonfootprint1.p.rapidapi.com/CarbonFootprintFromMotorBike"
 
-                querystring = {"type":"SmallMotorBike","distance":str(smallmotorbike)} 
+                querystring = {"type":"SmallMotorBike","distance":str(SmallMotorBike)} 
 
                 response = requests.request("GET", url, headers=headers, params=querystring)
                 response_data = response.json()
@@ -498,11 +572,65 @@ def min_cal(request):
 
             print("total_carbonemmision_othervehicles",total_carbonemmision_othervehicles)
             purchased_heat= request.POST.get('purchased_heat')
-            purchased_heat_emmision=int(purchased_heat)*3.65
+            purchased_heat_emmision=purchased_heat*3
             
             purchased_cooling= request.POST.get('purchased_cooling')
-            purchased_cooling_emmision=int(purchased_cooling)*2.68
-            return render(request, 'success.html')
+            purchased_cooling_emmision=purchased_cooling*2
+            
+#             entry=carbon_emmision(
+#                 company_name,
+#                                   tree_eq,
+#                                   traditional_hydro_emmision,
+#                 location,
+#                 solar_energy,
+#                 wind_energy,
+#                 hydroelectric_energy,
+#                 biomass_energy,
+#                 geothermal_energy,
+#                 other_clean_energy,
+#                 fuel_petrol,
+#                 fuel_diesel,
+#                 fuel_LPG,
+#                 SmallDieselCar,
+#                 MediumDieselCar ,
+#                     LargeDieselCar,   
+#                 MediumHybridCar,  
+# LargeHybridCar,   
+# MediumLPGCar,  
+# LargeLPGCar, 
+# MediumCNGCar,
+# LargeCNGCar, 
+# SmallPetrolVan,  
+# LargePetrolVan,
+# SmallDieselVan,
+# MediumDieselVan,
+# LargeDieselVan,
+# LPGVan,
+# CNGVan,
+# SmallPetrolCar,
+# MediumPetrolCar,
+# LargePetrolCar,  
+# SmallMotorBike,  
+# MediumMotorBike,   
+# LargeMotorBike,
+# DomesticFlight,
+# ShortEconomyClassFlight,  
+# ShortBusinessClassFlight,  
+# LongEconomyClassFlight,   
+# LongPremiumClassFlight,   
+# LongBusinessClassFlight,   
+# LongFirstClassFlight,  
+# Taxi,   
+# ClassicBus,   
+# EcoBus,   
+# Coach,   
+# NationalTrain,   
+# LightRail,   
+# Subway,
+# purchased_heat,   
+# purchased_cooling)
+#             entry.save()
+            return render(request, 'dashboard.html')
     else:
         form = carbon_emmision()
     return render(request, 'accept_info.html', {'form': form})

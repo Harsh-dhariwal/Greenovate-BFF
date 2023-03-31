@@ -1,5 +1,6 @@
 from django.db import models
 
+
 # Create your models here.
 
 location_options=[
@@ -57,9 +58,6 @@ class comp_database(models.Model):
     LongPremiumClassFlight=models.IntegerField()
     LongBusinessClassFlight=models.IntegerField()
     LongFirstClassFlight=models.IntegerField()
-    SmallMotorBike=models.IntegerField()
-    MediumMotorBike=models.IntegerField()
-    LargeMotorBike=models.IntegerField()
     Taxi=models.IntegerField()
     ClassicBus=models.IntegerField()
     EcoBus=models.IntegerField()
@@ -67,8 +65,6 @@ class comp_database(models.Model):
     NationalTrain=models.IntegerField()
     LightRail=models.IntegerField()
     Subway=models.IntegerField()
-    FerryOnFoot=models.IntegerField()
-    FerryInCar=models.IntegerField()
     purchased_cooling=models.IntegerField(default=0)
     purchased_heating=models.IntegerField(default=0)
    

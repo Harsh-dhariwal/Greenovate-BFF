@@ -27,6 +27,7 @@ urlpatterns = [
     path('register/', RegisterView.as_view(), name='register'),
     path('calc/', calc, name='calc'),
     path('mincal/',min_cal,name='mincal'),
+    path('accounts/profile/',views.profile,name='profile'),
 
 ]
 
